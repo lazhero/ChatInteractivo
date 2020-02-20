@@ -40,11 +40,13 @@ public class Enlace {
     public void ConectarEnviarVariable(){
         this.port=40000;
         Socket Receptor=null;
-        while(this.port<40100) {
+        boolean flag=true;
+        while(this.port<40100 && flag) {
             try {
                 Receptor = new Socket(this.ip,this.port);
                 this.ConectadoS=true;
                 System.out.println("Puerto encontrado");
+                flag=false;
             } catch (IOException excep) {
                 this.port++;
                 Receptor=null;

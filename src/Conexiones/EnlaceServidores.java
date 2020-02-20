@@ -39,12 +39,12 @@ public class EnlaceServidores {
     public void ConectarRecepVariable(){
         this.port=40000;
         this.Server=null;
-        int Cuenta=0;
-        while(this.port<40100) {
+        boolean flag=true;
+        while(this.port<40100 && flag) {
             try {
-                Cuenta++;
-                System.out.println(Cuenta);
                 this.Server = new ServerSocket(this.port);
+                System.out.println("Conexion Exitosa");
+                flag=false;
                 this.ConectadoS=true;
             } catch (IOException excep) {
                 this.port++;
