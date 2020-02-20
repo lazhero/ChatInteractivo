@@ -5,6 +5,7 @@ public class EnlaceServidores {
     private  int port;
     private  String ip;
     private boolean ConectadoS=false;
+    private ServerSocket Server;
     EnlaceServidores(int port, String ip){
         this.port=port;
         this.ip=ip;
@@ -17,18 +18,18 @@ public class EnlaceServidores {
         this.ip=ip;
         this.port=4000;
     }
-    public ServerSocket ConectarRecepFijo(){
+    public void ConectarRecepFijo(){
         try{
             ServerSocket Receptor=new ServerSocket(this.port);
             System.out.println("Conexion Exitosa");
-            return Receptor;
+            this.Server= Receptor;
         }
         catch(IOException excep){
             System.out.print("El puerto no esta disponible");
-            return this.ConectarRecepVariable();
+            this.ConectarRecepVariable();
         }
     }
-    public ServerSocket ConectarRecepVariable(){
+    public void ConectarRecepVariable(){
         this.port=4000;
         ServerSocket Receptor=null;
         while(this.port<4100) {
@@ -41,6 +42,6 @@ public class EnlaceServidores {
 
             }
         }
-        return Receptor;
+        this.Server= Receptor;
     }
 }

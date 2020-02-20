@@ -7,6 +7,7 @@ import java.net.Socket;
 public class Enlace {
     private  int port;
     private  String ip;
+    private Socket client;
     private boolean ConectadoS=false;
     Enlace(int port, String ip){
         this.port=port;
@@ -21,20 +22,20 @@ public class Enlace {
         this.port=4000;
     }
 
-    public Socket ConectarEnviarFijo(){
+    public void ConectarEnviarFijo(){
         try{
             Socket Receptor=new Socket(this.ip,this.port);
             System.out.println("Conexion Exitosa");
-            return Receptor;
+            this.client= Receptor;
 
 
         }
         catch(IOException excep){
             System.out.print("El puerto no esta disponible");
-            return this.ConectarEnviarVariable();
+            this.ConectarEnviarVariable();
         }
     }
-    public Socket ConectarEnviarVariable(){
+    public void ConectarEnviarVariable(){
         this.port=4000;
         Socket Receptor=null;
         while(this.port<4100) {
@@ -47,6 +48,6 @@ public class Enlace {
 
             }
         }
-        return Receptor;
+        this.client= Receptor;
     }
 }
