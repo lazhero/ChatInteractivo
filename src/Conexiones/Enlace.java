@@ -2,6 +2,7 @@ package Conexiones;
 
 import java.io.IOException;
 import java.net.ServerSocket;
+import java.net.Socket;
 
 public class Enlace {
     private  int port;
@@ -15,9 +16,13 @@ public class Enlace {
       this.port=4000;
       this.ip="127.0.0.1";
     }
+    Enlace(String ip){
+        this.ip=ip;
+        this.port=4000;
+    }
     public ServerSocket ConectarRecepFijo(){
         try{
-            ServerSocket Receptor=new ServerSocket(port);
+            ServerSocket Receptor=new ServerSocket(this.port);
             System.out.println("Conexion Exitosa");
             return Receptor;
         }
@@ -32,6 +37,34 @@ public class Enlace {
         while(this.port<4100) {
             try {
                 Receptor = new ServerSocket(this.port);
+                this.ConectadoS=true;
+            } catch (IOException excep) {
+                this.port++;
+                Receptor=null;
+
+            }
+        }
+        return Receptor;
+    }
+    public Socket ConectarEnviarFijo(){
+        try{
+            Socket Receptor=new Socket(this.ip,this.port);
+            System.out.println("Conexion Exitosa");
+            return Receptor;
+
+
+        }
+        catch(IOException excep){
+            System.out.print("El puerto no esta disponible");
+            return this.ConectarEnviarVariable();
+        }
+    }
+    public Socket ConectarEnviarVariable(){
+        this.port=4000;
+        Socket Receptor=null;
+        while(this.port<4100) {
+            try {
+                Receptor = new Socket(this.ip,this.port);
                 this.ConectadoS=true;
             } catch (IOException excep) {
                 this.port++;
