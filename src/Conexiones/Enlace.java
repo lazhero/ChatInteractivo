@@ -6,6 +6,7 @@ import java.net.ServerSocket;
 public class Enlace {
     private  int port;
     private  String ip;
+    private boolean ConectadoS=false;
     Enlace(int port, String ip){
         this.port=port;
         this.ip=ip;
@@ -27,14 +28,14 @@ public class Enlace {
     }
     public ServerSocket ConectarRecepVariable(){
         this.port=4000;
-        boolean flag=true;
-        ServerSocket Receptor;
-        while(flag) {
+        ServerSocket Receptor=null;
+        while(this.port<4100) {
             try {
                 Receptor = new ServerSocket(this.port);
-                flag=false;
+                this.ConectadoS=true;
             } catch (IOException excep) {
                 this.port++;
+                Receptor=null;
 
             }
         }
