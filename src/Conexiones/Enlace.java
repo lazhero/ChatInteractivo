@@ -50,4 +50,6 @@ public class Enlace {
         }
         this.client= Receptor;
     }
+    public void EnviarMensaje(String Mensaje)
+        
 }

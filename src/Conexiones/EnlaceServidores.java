@@ -1,6 +1,10 @@
 package Conexiones;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.ServerSocket;
+import java.net.Socket;
+
 public class EnlaceServidores {
     private  int port;
     private  String ip;
@@ -43,5 +47,22 @@ public class EnlaceServidores {
             }
         }
         this.Server= Receptor;
+    }
+    public String RecibirMensaje() throws IOException{
+        String Texto="";
+        boolean Recibiendo=true;
+        try {
+            while (Recibiendo) {
+                Socket Entrada = this.Server.accept();
+                BufferedReader Lector = new BufferedReader(new InputStreamReader(Entrada.getInputStream()));
+                Texto = Lector.readLine();
+            }
+
+        }
+        catch(IOException Exp){
+            System.out.print("Matenme");
+        }
+        return Texto;
+
     }
 }
