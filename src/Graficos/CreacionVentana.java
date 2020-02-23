@@ -32,23 +32,15 @@ public class CreacionVentana extends Application {
         Pane FirstLevel=new Pane();
         Pane SecondLevel=new Pane();
         Button btn=WidgetCreation.CreateButton("Prueba");
-        Rectangle rect=this.CreateRec(0.0,0.0,150,600);
+        Rectangle rect=WidgetCreation.CreateRec(0.0,0.0,150,600);
         FirstLevel.getChildren().addAll(rect);
         SecondLevel.getChildren().addAll(btn);
         Scene scene=new Scene(FirstLevel,800,600,Color.BLUE);
         Scene scene2= new Scene(SecondLevel,400,440,Color.RED);
-        primaryStage.setScene(scene,scene2);
+        primaryStage.setScene(scene);
         primaryStage.show();
 
     }
-    public Rectangle CreateRec(double coordX,double coordY,double width,double height){
-        Rectangle rect=new Rectangle();
-        rect.setX(coordX);
-        rect.setY(coordY);
-        rect.setWidth(width);
-        rect.setHeight(height);
-        rect.setFill(Color.LIGHTGREEN);
-        return rect;
-    }
+
 
 }
