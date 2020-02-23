@@ -16,7 +16,6 @@ public class WidgetCreation {
         rect.setY(coordY);
         rect.setWidth(width);
         rect.setHeight(height);
-        rect.setFill(Color.LIGHTGREEN);
         return rect;
     }
 }
