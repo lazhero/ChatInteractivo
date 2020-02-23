@@ -30,17 +30,18 @@ public class CreacionVentana extends Application {
     public void start(Stage primaryStage) {
 
         Pane FirstLevel=new Pane();
-        Pane SecondLevel=new Pane();
         Button btn=WidgetCreation.CreateButton("Prueba");
+        Button btn2=WidgetCreation.CreateButton("Prueba2");
         Rectangle rect=WidgetCreation.CreateRec(0.0,0.0,150,600);
-        FirstLevel.getChildren().addAll(rect);
-        SecondLevel.getChildren().addAll(btn);
+        VBox SecondLevel=new VBox(btn,btn2);
+        FirstLevel.getChildren().addAll(rect,SecondLevel);
         Scene scene=new Scene(FirstLevel,800,600,Color.BLUE);
-        Scene scene2= new Scene(SecondLevel,400,440,Color.RED);
+       // Scene scene2= new Scene(SecondLevel,400,440,Color.RED);
         primaryStage.setScene(scene);
         primaryStage.show();
 
     }
+
 
 
 }
