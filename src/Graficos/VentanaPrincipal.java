@@ -7,11 +7,18 @@ import javafx.scene.Scene;
 import javafx.scene.text.Text;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
+import java.io.FileInputStream;
 
 
 
 
-public class Graficos extends Application {
+public class VentanaPrincipal extends Application {
+    private  Stage stage;
+    private  Scene scene;
+    private  StackPane stack;
+
+    public VentanaPrincipal() {
+    }
 
     public static void main(String[] args) {
         launch(args);
@@ -19,16 +26,15 @@ public class Graficos extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        ///primaryStage.setMaxWidth(100.0);
-        ///primaryStage.setMaxHeight(500.0);
-        ///primaryStage.setResizable(false);
-        Text text = new Text();
-        text.setText("Hello !! Welcome to JavaTPoint");
-        StackPane root = new StackPane();
-        Scene scene = new Scene(root,1000,400);
-        root.getChildren().add(text);
+        this.stage=primaryStage;
+        this.stack=new StackPane();
+        this.scene=new Scene(this.stack,1000,400);
+        StackPane root = this.stack;
+        Scene scene = this.scene;
+        //root.getChildren().add(text);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Text Example");
+       // primaryStage.
         primaryStage.show();
 
 
