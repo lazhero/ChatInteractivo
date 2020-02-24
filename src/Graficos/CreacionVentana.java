@@ -30,11 +30,13 @@ public class CreacionVentana extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        AnchorPane FirstLevelAnchorPane=LayoutCreation.Anchor(800,600);
-        Rectangle rectSecondLevel=WidgetCreation.CreateRec(0.0,0.0,300,600);
-        ScrollPane SecondLevelScrollPane=LayoutCreation.scroll(400,500);
-        AnchorPane ThridLevelAnchorPane=LayoutCreation.Anchor(400,1000);
-        FirstLevelAnchorPane.getChildren().addAll(Rectangle,SecondLevelScrollPane);
+        AnchorPane FirstLevelAnchorPane=LayoutCreation.Anchor(800,300);
+        Rectangle rectSecondLevel=WidgetCreation.CreateRec(7.0,7.0,300,583);
+        ScrollPane SecondLevelScrollPane=LayoutCreation.scroll(440,500);
+        AnchorPane ThridLevelAnchorPane=LayoutCreation.Anchor(400,10000);
+        LayoutNewContent.Add(FirstLevelAnchorPane,SecondLevelScrollPane,20.0,0.0,0.0,320.0);
+        FirstLevelAnchorPane.getChildren().add(rectSecondLevel);
+        LayoutNewContent.Update(SecondLevelScrollPane,ThridLevelAnchorPane);
         Scene scene=new Scene(FirstLevelAnchorPane,800,600,Color.BLUE);
        // Scene scene2= new Scene(SecondLevel,400,440,Color.RED);
         primaryStage.setScene(scene);
