@@ -1,6 +1,10 @@
 package Graficos;
 import java.util.ArrayList;
+import java.util.concurrent.atomic.LongAccumulator;
+
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -21,9 +25,7 @@ import javafx.scene.shape.Rectangle;
 
 
 public class VentanaPrincipal extends Application {
-    private ArrayList<Node> Chats;
-    private ArrayList<String> HistorialChats;
-    private int NumeroChat=0;
+
 
     public static void main(String[] args) {
         launch(args);
@@ -31,22 +33,24 @@ public class VentanaPrincipal extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        AnchorPane FirstLevelAnchorPane=LayoutCreation.Anchor(800,300);
-        Rectangle rectSecondLevel=WidgetCreation.CreateRec(7.0,7.0,300,583);
-        ScrollPane SecondLevelScrollPane=LayoutCreation.scroll(440,500);
-        //Button ADDBUTTON
-        AnchorPane ThridLevelAnchorPane=LayoutCreation.Anchor(400,10000);
-        LayoutNewContent.Add(FirstLevelAnchorPane,SecondLevelScrollPane,20.0,0.0,0.0,320.0);
-        FirstLevelAnchorPane.getChildren().add(rectSecondLevel);
-        LayoutNewContent.Update(SecondLevelScrollPane,ThridLevelAnchorPane);
-        Scene scene=new Scene(FirstLevelAnchorPane,800,600,Color.BLUE);
-       // Scene scene2= new Scene(SecondLevel,400,440,Color.RED);
-        primaryStage.setScene(scene);
-        primaryStage.show();
+       AnchorPane FirstLevelAnchorPanel=LayoutCreation.Anchor(800.0,600.0);
+       Rectangle rectSecondLevel=WidgetCreation.CreateRec(10.0,10.0,300.0,550.0);
+       ScrollPane SecondLevelScrollPane=LayoutCreation.scroll(400.0,550.0);
+       Button btn=WidgetCreation.CreateButton("+");
+        btn.setOnAction(new EventHandler() {
+            @Override
+            public void handle(Event event) {
+                ChatAcumulator.Creator(SecondLevelScrollPane,FirstLevelAnchorPanel);
+            }
 
-
-    }
-    public static void CrearChat(){
+        });
+       //AnchorPane ThridLevelAnchorPanel=LayoutCreation.Anchor(400.0,10000.0);
+       LayoutNewContent.Add(FirstLevelAnchorPanel,SecondLevelScrollPane,20.0,0.0,0.0,350.0);
+       LayoutNewContent.Add(FirstLevelAnchorPanel,btn,0.0,10.0,20.0,0.0);
+       FirstLevelAnchorPanel.getChildren().add(rectSecondLevel);
+       Scene scene=new Scene(FirstLevelAnchorPanel,800,600.0, Color.BLACK);
+       primaryStage.setScene(scene);
+       primaryStage.show();
 
     }
 

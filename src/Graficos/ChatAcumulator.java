@@ -17,7 +17,8 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.scene.shape.Rectangle;
 public class ChatAcumulator {
-    private static  ArrayList<Node> Chats;
+    private static  ArrayList<AnchorPane> Chats=new ArrayList<AnchorPane>();
+    private static Button[] ArrayButton={new Button(),new Button(),new Button(),new Button(),new Button(),new Button(),new Button()};
     private int id;
     private static ArrayList<String> HistorialChats;
     private static int NumeroChat=0;
@@ -30,14 +31,19 @@ public class ChatAcumulator {
         }
         NumeroChat++;
         id=NumeroChat;//Potencial Error
-       Button btn=WidgetCreation.CreateButton("chat");
+       Button btn=new Button("Chat");
        btn.setOnAction(e -> ButtonAction());
-       ChatAcumulator.anchor.getChildren().add(btn);
-       double TOP=10.0+10.0*this.id;
+       ChatAcumulator.anchor.getChildren().addAll(btn);
+       AnchorPane panel=LayoutCreation.Anchor(400.0,10000.0);
+       System.out.println("Hecho");
+       Chats.add(panel);
+       double TOP=10.0+20.0*this.id;
+       System.out.println(id);
        LayoutNewContent.Add(ChatAcumulator.anchor,btn,TOP,0.0,0.0,25.0);
+       System.out.println("Hecho");
     }
     public static void Creator(ScrollPane scroll,AnchorPane anchor){
-       if(ChatAcumulator.NumeroChat<10){
+       if(ChatAcumulator.NumeroChat<7){
            new ChatAcumulator(scroll,anchor);
        }
     }
