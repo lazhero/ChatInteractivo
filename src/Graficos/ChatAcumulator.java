@@ -30,7 +30,7 @@ public class ChatAcumulator {
         }
         NumeroChat++;
         id=NumeroChat;//Potencial Error
-       Button btn=new Button("Chat "+(this.id));
+       Button btn=WidgetCreation.CreateButton("chat");
        btn.setOnAction(e -> ButtonAction());
        ChatAcumulator.anchor.getChildren().add(btn);
        double TOP=10.0+10.0*this.id;

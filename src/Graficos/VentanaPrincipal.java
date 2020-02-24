@@ -31,7 +31,6 @@ public class VentanaPrincipal extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        VentanaPrincipal ventana=new VentanaPrincipal();
         AnchorPane FirstLevelAnchorPane=LayoutCreation.Anchor(800,300);
         Rectangle rectSecondLevel=WidgetCreation.CreateRec(7.0,7.0,300,583);
         ScrollPane SecondLevelScrollPane=LayoutCreation.scroll(440,500);
@@ -47,10 +46,9 @@ public class VentanaPrincipal extends Application {
 
 
     }
-    public void CrearChat(){
+    public static void CrearChat(){
 
     }
-
 
 
 
