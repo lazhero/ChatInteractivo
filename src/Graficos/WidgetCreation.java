@@ -8,6 +8,13 @@ import org.jetbrains.annotations.NotNull;
 public class WidgetCreation {
     public static Button CreateButton(String text){
         Button button=new Button(text);
+        button.setStyle(
+                "-fx-background-radius: 5em; " +
+                        "-fx-min-width: 30px; " +
+                        "-fx-min-height: 30px; " +
+                        "-fx-max-width: 30px; " +
+                        "-fx-max-height: 30px;"
+        );
         return button;
     }
     public static Rectangle CreateRec(double coordX, double coordY, double width, double height){
