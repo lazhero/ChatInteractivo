@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -18,8 +19,8 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.scene.shape.Rectangle;
 public class ChatAcumulator {
-    private static  ArrayList<AnchorPane> Chats=new ArrayList<AnchorPane>();
-    private static Button[] ArrayButton={new Button("chat 1"),new Button("Chat 2"),new Button("Chat 3"),new Button("Chat 4"),new Button("Chat 5"),new Button("Chat 6"),new Button("Chat 7")};
+    private static  ArrayList<AnchorPane> Chats=new ArrayList<AnchorPane>(0);
+    private static  ArrayList<Integer> MessagesNumber=new ArrayList<Integer>();
     private int id;
     private static ArrayList<String> HistorialChats;
     private static int NumeroChat=0;
@@ -39,6 +40,7 @@ public class ChatAcumulator {
        AnchorPane panel=LayoutCreation.Anchor(400.0,10000.0);
        System.out.println("Hecho");
        Chats.add(panel);
+       MessagesNumber.add(0);
        double TOP=10.0+60*this.id;
        System.out.println(id);
        btnk.setOnAction(e -> ButtonAction());
@@ -57,8 +59,9 @@ public class ChatAcumulator {
 
 
     }
-    public void AddChat(int xSep,int ySep){
-
+    public static void AddChat(String Mensaje,int posicion){
+        Label label =new Label(Mensaje);
+        LayoutNewContent.Add(ChatAcumulator.Chats.get(posicion),label,(posicion+1)*50,0,15,0);
     }
 
 
