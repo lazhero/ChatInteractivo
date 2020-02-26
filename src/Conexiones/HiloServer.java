@@ -3,20 +3,21 @@ package Conexiones;
 import Graficos.ChatAcumulator;
 
 public class HiloServer extends Thread {
-    private int port;
+   private int posicion=1;
     private int chatId;
+    private boolean Running=true;
     private EnlaceServidores Server;
-    HiloServer(int port,int ChatNumber){
-        this.Server=new EnlaceServidores(port);
-        this.chatId=ChatNumber;
-        this.port=port+1;
+    public HiloServer(int ChatNumber){
+        this.Server=new EnlaceServidores();
+        this.Server.ConectarRecepFijo();
+        this.chatId=ChatNumber+1;
+
     }
     public void run(){
-        while(true) {
+        while(this.Running) {
             String[] Mensaje = this.Server.RecibirMensaje();
-           ChatAcumulator.AddChat(Mensaje[0],this.chatId);
-
-
+           ChatAcumulator.AddChat(Mensaje[1],this.chatId,posicion);
+            posicion++;
         }
     }
 

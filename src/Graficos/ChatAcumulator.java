@@ -1,6 +1,9 @@
 package Graficos;
 import java.util.ArrayList;
+
+import Conexiones.HiloServer;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -19,10 +22,9 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.scene.shape.Rectangle;
 public class ChatAcumulator {
-    private static  ArrayList<AnchorPane> Chats=new ArrayList<AnchorPane>(0);
+    private static  ArrayList<AnchorPane> Chats=new ArrayList<AnchorPane>();
     private static  ArrayList<Integer> MessagesNumber=new ArrayList<Integer>();
     private int id;
-    private static ArrayList<String> HistorialChats;
     private static int NumeroChat=0;
     private static ScrollPane scroll=null;
     private static AnchorPane anchor=null;
@@ -38,16 +40,19 @@ public class ChatAcumulator {
       btnk.setOnAction(e->this.ButtonAction());
 
        AnchorPane panel=LayoutCreation.Anchor(400.0,10000.0);
-       System.out.println("Hecho");
+      // System.out.println("Hecho");
        Chats.add(panel);
        MessagesNumber.add(0);
+       HiloServer hilo=new HiloServer(this.id);
+       //Platform.runLater();
+       hilo.start();
        double TOP=10.0+60*this.id;
        System.out.println(id);
        btnk.setOnAction(e -> ButtonAction());
        btnk.setShape(new Circle(40));
        btnk.setStyle("-fx-background-color: #44ff4e; ");
        LayoutNewContent.Add(ChatAcumulator.anchor,btnk,TOP,0.0,0.0,25.0);
-       System.out.println("Hecho");
+       //System.out.println("Hecho");
     }
     public static void Creator(ScrollPane scroll,AnchorPane anchor){
        if(ChatAcumulator.NumeroChat<7){
@@ -59,9 +64,9 @@ public class ChatAcumulator {
 
 
     }
-    public static void AddChat(String Mensaje,int posicion){
+    public static void AddChat(String Mensaje,int posicion,int ubicacion){
         Label label =new Label(Mensaje);
-        LayoutNewContent.Add(ChatAcumulator.Chats.get(posicion),label,(posicion+1)*50,0,15,0);
+        LayoutNewContent.Add(ChatAcumulator.Chats.get(posicion-2),label,(ubicacion)*20,0,15,0);
     }
 
 
