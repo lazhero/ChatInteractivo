@@ -53,22 +53,28 @@ public class EnlaceServidores {
         }
 
     }
-    public String RecibirMensaje(){
+    public String[] RecibirMensaje(){
         String Texto="";
+        String[] retorno=null;
         boolean Recibiendo=true;
         try {
             while (Recibiendo) {
                 Socket Entrada = this.Server.accept();
                 BufferedReader Lector = new BufferedReader(new InputStreamReader(Entrada.getInputStream()));
                 Texto = Lector.readLine();
-                Recibiendo=false;
+                if(RevisionFormato.Format(Texto,"~")){
+                    retorno=Texto.split("~");
+                    Recibiendo=false;
+
+
+                }
             }
 
         }
         catch(IOException Exp){
             System.out.print("Matenme");
         }
-        return Texto;
+        return retorno;
 
     }
 }

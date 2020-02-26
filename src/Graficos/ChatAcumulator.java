@@ -57,6 +57,10 @@ public class ChatAcumulator {
 
 
     }
+    public void AddChat(int xSep,int ySep){
+
+    }
+
 
 
 }

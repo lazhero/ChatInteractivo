@@ -58,7 +58,7 @@ public class Enlace {
     public void EnviarMensaje(String Mensaje){
         try {
             OutputStreamWriter Escritura = new OutputStreamWriter(this.client.getOutputStream());
-            Escritura.write(Mensaje + "\n");
+            Escritura.write(Integer.toString(this.port)+"~"+Mensaje + "\n");
             Escritura.flush();
             this.client.close();
         }
