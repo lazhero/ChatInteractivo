@@ -23,6 +23,10 @@ public class Enlace {
         this.ip=ip;
         this.port=40000;
     }
+    public Enlace(int port){
+        this.port=port;
+        this.ip="127.0.0.1";
+    }
 
     public void ConectarEnviarFijo(){
         try{
