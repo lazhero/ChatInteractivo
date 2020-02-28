@@ -13,7 +13,7 @@ public class ControlEnvio {
         catch (Exception e){
             Enlace Enviar=new Enlace();
             Enviar.ConectarEnviarVariable();
-
+            
         }
 
     }

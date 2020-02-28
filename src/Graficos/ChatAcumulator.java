@@ -88,5 +88,8 @@ public class ChatAcumulator {
     public static int getPuerto(int Subindice){
        return PuertosSalida.get(Subindice);
     }
+    public static void AddPuerto(int Puerto){
+       ChatAcumulator.PuertosSalida.add(Puerto);
+    }
 }
 
