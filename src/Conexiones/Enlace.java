@@ -66,5 +66,8 @@ public class Enlace {
             System.out.print("Error");
         }
     }
+    public int getPort(){
+        return this.port;
+    }
 
 }

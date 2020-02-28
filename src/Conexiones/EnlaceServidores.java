@@ -78,4 +78,7 @@ public class EnlaceServidores {
         return retorno;
 
     }
+    public int getPort(){
+        return this.port;
+    }
 }
