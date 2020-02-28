@@ -32,7 +32,7 @@ public class EnlaceServidores {
             System.out.println("Conexion Exitosa");
         }
         catch(IOException excep){
-            System.out.print("El puerto no esta disponible");
+            System.out.println("El puerto no esta disponible");
             this.ConectarRecepVariable();
         }
     }
@@ -43,6 +43,7 @@ public class EnlaceServidores {
         while(this.port<40100 && flag) {
             try {
                 this.Server = new ServerSocket(this.port);
+                ServerSocket Prueba=new ServerSocket(this.port+1);
                 System.out.println("Conexion Exitosa");
                 flag=false;
                 this.ConectadoS=true;

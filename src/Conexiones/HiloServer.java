@@ -11,13 +11,11 @@ public class HiloServer extends Thread {
     public HiloServer(int ChatNumber){
         this.Server=new EnlaceServidores();
         this.Server.ConectarRecepVariable();
-        this.chatId=ChatNumber+1;
 
     }
     public void run(){
         while(this.Running) {
             String[] Mensaje = this.Server.RecibirMensaje();
-            int chat=this.chatId;
             Platform.runLater(new Runnable() {
 
                 @Override

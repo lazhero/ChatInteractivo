@@ -25,6 +25,7 @@ public class ChatAcumulator {
     private static  ArrayList<AnchorPane> Chats=new ArrayList<AnchorPane>();
    // private static  ArrayList<Integer> MessagesNumber=new ArrayList<Integer>();
     private int id;
+    private static int chatActual;
     private static int NumeroChat=0;
     private static ScrollPane scroll=null;
     private static AnchorPane anchor=null;
@@ -60,7 +61,8 @@ public class ChatAcumulator {
        }
     }
     private void ButtonAction(){
-           ChatAcumulator.scroll.setContent(ChatAcumulator.Chats.get(this.id - 1));
+       ChatAcumulator.chatActual=this.id-1;
+           ChatAcumulator.scroll.setContent(ChatAcumulator.Chats.get(chatActual));
 
 
     }
