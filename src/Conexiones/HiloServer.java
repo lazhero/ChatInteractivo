@@ -8,6 +8,7 @@ public class HiloServer extends Thread {
     private int chatId;
     private boolean Running=true;
     private EnlaceServidores Server;
+    private int MensajesRecibidos=0;
     public HiloServer(int ChatNumber){
         this.Server=new EnlaceServidores();
         this.Server.ConectarRecepVariable();
@@ -17,12 +18,14 @@ public class HiloServer extends Thread {
     public void run(){
         while(this.Running) {
             String[] Mensaje = this.Server.RecibirMensaje();
+            this.MensajesRecibidos++;
+            int CantidadMensajes=this.MensajesRecibidos;
             int chat=this.chatId;
             Platform.runLater(new Runnable() {
 
                 @Override
                 public void run() {
-                    ChatAcumulator.AddChat(Mensaje[1],chat,posicion);
+                    ChatAcumulator.AddChat(Mensaje,chat,posicion,CantidadMensajes);
                 }
             });
 

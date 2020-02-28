@@ -27,6 +27,7 @@ public class ChatAcumulator {
     private int id;
     private static int chatActual;
     private static int NumeroChat=0;
+    private static ArrayList<Integer> PuertosSalida=new ArrayList<Integer>();
     private static ScrollPane scroll=null;
     private static AnchorPane anchor=null;
    private ChatAcumulator(ScrollPane scroll,AnchorPane anchor){
@@ -66,9 +67,12 @@ public class ChatAcumulator {
 
 
     }
-    public static void AddChat(String Mensaje,int posicion,int ubicacion){
-        Label label =new Label(Mensaje);
+    public static void AddChat(String[] Mensaje,int posicion,int ubicacion,int CantidadMensajes){
+        Label label =new Label(Mensaje[0]);
         LayoutNewContent.Add(ChatAcumulator.Chats.get(posicion-2),label,(ubicacion)*20,0,15,0);
+        if (CantidadMensajes==1){
+
+        }
     }
 
 
