@@ -25,11 +25,11 @@ public class HiloServer extends Thread {
 
                 @Override
                 public void run() {
-                    ChatAcumulator.AddChat(Mensaje,chat,posicion,CantidadMensajes);
+                    ChatAcumulator.AddChat(Mensaje,chat);
                 }
             });
 
-            posicion++;
+
         }
     }
 

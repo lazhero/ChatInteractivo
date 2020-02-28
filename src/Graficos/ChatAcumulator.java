@@ -23,7 +23,7 @@ import javafx.scene.text.Text;
 import javafx.scene.shape.Rectangle;
 public class ChatAcumulator {
     private static  ArrayList<AnchorPane> Chats=new ArrayList<AnchorPane>();
-   // private static  ArrayList<Integer> MessagesNumber=new ArrayList<Integer>();
+    private static  ArrayList<Integer> MessagesNumber=new ArrayList<Integer>();
     private int id;
     private static int chatActual;
     private static int NumeroChat=0;
@@ -67,12 +67,18 @@ public class ChatAcumulator {
 
 
     }
-    public static void AddChat(String[] Mensaje,int posicion,int ubicacion,int CantidadMensajes){
-        Label label =new Label(Mensaje[0]);
-        LayoutNewContent.Add(ChatAcumulator.Chats.get(posicion-2),label,(ubicacion)*20,0,15,0);
-        if (CantidadMensajes==1){
-
+    public static void AddChat(String[] Mensaje,int ChatNum){
+       try{
+           MessagesNumber.set(ChatNum-2,MessagesNumber.get(ChatNum-2)+1);
+       }
+       catch(Exception e){
+           MessagesNumber.add(1);
+           PuertosSalida.add(Integer.parseInt(Mensaje[0]));
         }
+       int ubicacion=MessagesNumber.get(ChatNum-2);
+        Label label =new Label(Mensaje[1]);
+        LayoutNewContent.Add(ChatAcumulator.Chats.get(ChatNum-2),label,(ubicacion)*20,0,15,0);
+
     }
 
 
