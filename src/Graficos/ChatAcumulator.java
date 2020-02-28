@@ -23,7 +23,7 @@ import javafx.scene.text.Text;
 import javafx.scene.shape.Rectangle;
 public class ChatAcumulator {
     private static  ArrayList<AnchorPane> Chats=new ArrayList<AnchorPane>();
-    private static  ArrayList<Integer> MessagesNumber=new ArrayList<Integer>();
+   // private static  ArrayList<Integer> MessagesNumber=new ArrayList<Integer>();
     private int id;
     private static int NumeroChat=0;
     private static ScrollPane scroll=null;
@@ -42,7 +42,7 @@ public class ChatAcumulator {
        AnchorPane panel=LayoutCreation.Anchor(400.0,10000.0);
       // System.out.println("Hecho");
        Chats.add(panel);
-       MessagesNumber.add(0);
+      // MessagesNumber.add(0);
        HiloServer hilo=new HiloServer(this.id);
        //Platform.runLater();
        hilo.start();
