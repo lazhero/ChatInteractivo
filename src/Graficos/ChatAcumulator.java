@@ -82,5 +82,11 @@ public class ChatAcumulator {
     }
 
 
-
+    public static int getChatActual(){
+       return chatActual;
+    }
+    public static int getPuerto(int Subindice){
+       return PuertosSalida.get(Subindice);
+    }
 }
+
