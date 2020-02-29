@@ -2,6 +2,7 @@ package Graficos;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.LongAccumulator;
 
+import Conexiones.ControlEnvio;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -40,17 +41,22 @@ public class VentanaPrincipal extends Application {
        Button btn=WidgetCreation.CreateButton("+");
        Button btn1=WidgetCreation.CreateButton("Y");
        boolean confirmacion=false;
+        TextField TextInput=new TextField();
+        TextInput.setPrefWidth(385.0);
+        TextInput.setPrefHeight(30.0);
+        TextInput.setText("Escriba su mensaje aqui ");
         btn.setOnAction(e->
                 ChatAcumulator.Creator(SecondLevelScrollPane,FirstLevelAnchorPanel)
         );
+        btn1.setOnAction(e->
+                ControlEnvio.Enviar(TextInput.getText())
+                );
        //AnchorPane ThridLevelAnchorPanel=LayoutCreation.Anchor(400.0,10000.0);
        LayoutNewContent.Add(FirstLevelAnchorPanel,SecondLevelScrollPane,20.0,0.0,0.0,350.0);
        LayoutNewContent.Add(FirstLevelAnchorPanel,btn,0.0,10.0,0,20.0);
+       LayoutNewContent.Add(FirstLevelAnchorPanel,btn1,0.0,20.0,15.0,0.0);
        FirstLevelAnchorPanel.getChildren().add(rectSecondLevel);
-       TextField TextInput=new TextField();
-       TextInput.setPrefWidth(385.0);
-       TextInput.setPrefHeight(30.0);
-       TextInput.setText("Escriba su mensaje aqui ");
+
        LayoutNewContent.Add(FirstLevelAnchorPanel,TextInput,0.0,20.0,65.0,0.0);
        Scene scene=new Scene(FirstLevelAnchorPanel,800,600.0, Color.BLACK);
        primaryStage.setScene(scene);

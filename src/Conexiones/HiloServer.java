@@ -6,7 +6,7 @@ import javafx.application.Platform;
 import java.util.ArrayList;
 
 public class HiloServer extends Thread {
-   private int posicion=1;
+    private int posicion=1;
     private int chatId;
     private boolean Running=true;
     private EnlaceServidores Server;
@@ -28,6 +28,7 @@ public class HiloServer extends Thread {
     }
     public void run(){
         while(this.Running) {
+            System.out.println("Estoy aqui");
             String[] Mensaje = this.Server.RecibirMensaje();
             this.MensajesRecibidos++;
             int CantidadMensajes=this.MensajesRecibidos;

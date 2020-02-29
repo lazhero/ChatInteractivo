@@ -1,10 +1,12 @@
 package Conexiones;
 
 import Graficos.ChatAcumulator;
+import javafx.scene.control.Label;
+
 
 public class ControlEnvio {
     public static void Enviar(String Mensaje){
-        int Posicion= ChatAcumulator.getChatActual()-1;
+        int Posicion= ChatAcumulator.getChatActual();
         Enlace Enviar;
         try{
             int Puerto=ChatAcumulator.getPuerto(Posicion);
@@ -18,6 +20,12 @@ public class ControlEnvio {
         }
         String MensajeFinal=Integer.toString(HiloServer.getPort(Posicion))+"~"+Mensaje;
         Enviar.EnviarMensaje(MensajeFinal);
+        ChatAcumulator.increase(Posicion);
+        ChatAcumulator.AddChat(Mensaje,Posicion);
+
+
+
+
 
 
     }
