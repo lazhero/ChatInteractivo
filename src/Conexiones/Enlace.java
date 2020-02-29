@@ -59,6 +59,24 @@ public class Enlace {
         }
         this.client= Receptor;
     }
+    public void ConectarEnviarVariable(int inicio){
+        this.port=inicio;
+        Socket Receptor=null;
+        boolean flag=true;
+        while(this.port<40100 && flag) {
+            try {
+                Receptor = new Socket(this.ip,this.port);
+                this.ConectadoS=true;
+                System.out.println("Puerto encontrado");
+                flag=false;
+            } catch (IOException excep) {
+                this.port++;
+                Receptor=null;
+
+            }
+        }
+        this.client= Receptor;
+    }
     public void EnviarMensaje(String Mensaje){
         try {
             OutputStreamWriter Escritura = new OutputStreamWriter(this.client.getOutputStream());
